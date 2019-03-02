@@ -1,0 +1,71 @@
+void insert_at_last(int value)
+{
+    node *temp_node;
+    temp_node = (node *) malloc(sizeof(node));
+
+    temp_node->number=value;
+    temp_node->next=NULL;
+
+    //For the 1st element
+    if(head==NULL)
+    {
+        head=temp_node;
+        last=temp_node;
+    }
+    else
+    {
+        last->next=temp_node;
+        last=temp_node;
+    }
+
+}
+
+
+
+
+void delete_item(int value)
+{
+    node *myNode = head, *previous=NULL;
+    int flag = 0;
+
+    while(myNode!=NULL)
+    {
+        if(myNode->number==value)
+        {
+            if(previous==NULL)
+                head = myNode->next;
+            else
+                previous->next = myNode->next;
+
+            printf("%d is deleted from list\n", value);
+
+            flag = 1;
+            free(myNode); //need to free up the memory to prevent memory leak
+            break;
+        }
+
+        previous = myNode;
+        myNode = myNode->next;
+    }
+
+    if(flag==0)
+        printf("Key not found!\n");
+}
+
+
+
+void print_linked_list()
+{
+    printf("\nYour full linked list is\n");
+
+    node *myList;
+    myList = head;
+
+    while(myList!=NULL)
+    {
+        printf("%d ", myList->number);
+
+        myList = myList->next;
+    }
+    puts("");
+}

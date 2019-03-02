@@ -18,34 +18,73 @@ int main(void)
         exit(EXIT_FAILURE);
     }
     int satir=0;
+    char  *inf1;
+    char  *inf2;
+    char  *inf5;
+    char  *inf4;
+    char  *inf3;
+    char  *inf6;
+
     while ((read = getline(&line, &len, fp)) != -1) {
         char *ptr = strtok(line, delim);
-        while(ptr != NULL) {
-            printf("%d",satir);
 
             trim(ptr, NULL);
-            printf("'%s'\n", ptr);
-            char  *type = ptr;
-            if (satir == 0) {
-                if (strcmp(ptr, "E") == 0) {
+            printf("\n");
+            inf1 = ptr;
+
+                if (strcmp(inf1, "E") == 0) {
                     printf("Encyclopedia\n");
                     ptr = strtok(NULL, delim);
+                    trim(ptr, NULL);
+                    inf2=ptr;
+                    ptr = strtok(NULL, delim);
+                    trim(ptr, NULL);
+                    inf3=ptr;
+                    ptr = strtok(NULL, delim);
+                    trim(ptr, NULL);
+                    inf4=ptr;
+                    ptr = strtok(NULL, delim);
+                    trim(ptr, NULL);
+                    inf5=ptr;
+                    printf("Type: %s, Name: %s, Publisher: %s, Price: %s, Isinstock: %s",inf1,inf2,inf3,inf4,inf5);
 
-                } else if (strcmp(ptr, "B") == 0) {
+                } else if (strcmp(inf1, "B") == 0) {
                     printf("Book\n");
                     ptr = strtok(NULL, delim);
-
-                } else if (strcmp(ptr, "P") == 0) {
+                    trim(ptr, NULL);
+                    inf2=ptr;
+                    ptr = strtok(NULL, delim);
+                    trim(ptr, NULL);
+                    inf3=ptr;
+                    ptr = strtok(NULL, delim);
+                    trim(ptr, NULL);
+                    inf4=ptr;
+                    ptr = strtok(NULL, delim);
+                    trim(ptr, NULL);
+                    inf5=ptr;
+                    printf("Type: %s, Name: %s, Author: %s, Price: %s, Isinstock: %s",inf1,inf2,inf3,inf4,inf5);
+                } else if (strcmp(inf1, "P") == 0) {
                     printf("Periodical\n");
                     ptr = strtok(NULL, delim);
+                    trim(ptr, NULL);
+                    inf2=ptr;
+                    ptr = strtok(NULL, delim);
+                    trim(ptr, NULL);
+                    inf3=ptr;
+                    ptr = strtok(NULL, delim);
+                    trim(ptr, NULL);
+                    inf4=ptr;
+                    ptr = strtok(NULL, delim);
+                    trim(ptr, NULL);
+                    inf5=ptr;
+                    ptr = strtok(NULL, delim);
+                    trim(ptr, NULL);
+                    inf6=ptr;
+                    printf("Type: %s, Name: %s, Editor: %s, Price: %s, Isinstock: %s, VolNo: %s",inf1,inf2,inf3,inf4,inf5,inf6);
                 }
-            }
-            satir++;
 
-        }
-        satir=0;
     }
-
+    printf("\n");
     fclose(fp);
     if (line)
         free(line);
