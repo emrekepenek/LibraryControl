@@ -1,0 +1,12 @@
+B # Name:AAAAAAAAAAAAA ,Author:yunus ,Price80 ,Isinstock:false 
+B # Name:AAAAAAAAAAAAA ,Author:David Watt ,Price80 ,Isinstock:false 
+B # Name:BBBBBBBBBBBBB ,Author:David Watt ,Price80 ,Isinstock:false 
+E # Name:Britannica ,Publisher:Encyclopedia Britannica ,Price800 ,Isinstock:false 
+B # Name:CCCCCCCCCCCCC ,Author:David Watt ,Price80 ,Isinstock:false 
+B # Name:Concepts of Programming Languages ,Author:Robert Sebesta ,Price70 ,Isinstock:true 
+B # Name:FFFFFFFFFFFFF ,Author:David Watt ,Price80 ,Isinstock:false 
+P # Name:IEEE Spectrum ,Editor:Susan Hassler ,Price2.500000 ,Isinstock:true ,VolNo:762 
+B # Name:KKKKKKKKKKKKK ,Author:David Watt ,Price80 ,Isinstock:false 
+B # Name:PL concepts and paradigms ,Author:David Watt ,Price80 ,Isinstock:false 
+B # Name:ZZZZZZZZZZZZZ ,Author:David Watt ,Price80 ,Isinstock:false 
+B # Name:denemsoniki ,Author:David Watt ,Price80 ,Isinstock:false 

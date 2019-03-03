@@ -30,13 +30,14 @@ typedef struct Encyclopedia
     union Library_type *next;
 }Encyclopedia ;
 
+enum type{boo , encycloped , peripcdica};
+
 union Library_type{
     Book *book;
     Periodical *periodical;
     Encyclopedia *encyclopedia;
-
+    enum type tip;
 } ;
-
 
 
 union Library_type *head=NULL, *last=NULL;
@@ -50,6 +51,7 @@ void insert_after(int key, int value);
 void delete_item(int value);
 void search_item(int value);
 
+void insert_at_last_Book(char *inf2,char *inf3,char *inf4,char *inf5);
 char *ltrim(char *str, const char *seps);
 char *trim(char *str, const char *seps);
 char *rtrim(char *str, const char *seps);
@@ -135,23 +137,7 @@ int main()
             inf5=ptr;
             printf("Type: %s, Name: %s, Author: %s, Price: %s, Isinstock: %s \n",inf1,inf2,inf3,inf4,inf5);
 
-            Book *book;
-            book = (Book *) malloc(sizeof(Book));
-            strcpy(book->Name,inf2);
-            strcpy(book->Author,inf3);
-            int price = atoi(inf4);
-            book->Price=price;
-            if (strcmp(inf5,"F")==0){
-                book->IsInStock=false;
-            }else if (strcmp(inf5,"T")==0){
-                book->IsInStock=true;
-            }
-
-            if(head==NULL){
-                head = malloc(sizeof(union Library_type));
-                head->book=book;
-                book->next=last;
-            }
+            insert_at_last_Book(inf2,inf3,inf4,inf5);
 
             printf("%i",head->book->Price);
 
@@ -243,7 +229,32 @@ char *rtrim(char *str, const char *seps) {
     return str;
 }
 
+void insert_at_last_Book(char *inf2,char *inf3,char *inf4,char *inf5){
 
+    Book *book;
+    book = (Book *) malloc(sizeof(Book));
+    strcpy(book->Name,inf2);
+    strcpy(book->Author,inf3);
+    int price = atoi(inf4);
+    book->Price=price;
+    if (strcmp(inf5,"F")==0){
+        book->IsInStock=false;
+    }else if (strcmp(inf5,"T")==0){
+        book->IsInStock=true;
+    }
+
+    if(head==NULL){
+        head = malloc(sizeof(union Library_type));
+        head->book=book;
+        book->next=last;
+        head->tip=boo;
+    }
+    else{
+
+    }
+    printf("%s",head->book->Name);
+
+}
 
 /*
     User Defined Functions
