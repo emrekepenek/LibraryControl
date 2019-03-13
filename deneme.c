@@ -37,7 +37,8 @@ void deleteSmallestI(int i);
 void consoleInsertion();
 void size();
 void save();
-
+void quit();
+void recFree(Type *tmp);
 Type *head =NULL , *last =NULL;
 int sizeList=0;
 int main(void)
@@ -47,9 +48,8 @@ int main(void)
     size_t len = 0;
     ssize_t read;
     char delim[] = "#\n";
-    fp = fopen("deneme.txt", "r");
+    fp = fopen("inputbookdb.txt", "r");
     if (fp == NULL) {
-        printf("yunus");
         exit(EXIT_FAILURE);
     }
     int satir=0;
@@ -64,11 +64,9 @@ int main(void)
         char *ptr = strtok(line, delim);
 
             trim(ptr, NULL);
-            printf("\n");
             inf1 = ptr;
 
                 if (strcmp(inf1, "E") == 0) {
-                    printf("Encyclopedia\n");
                     ptr = strtok(NULL, delim);
                     trim(ptr, NULL);
                     inf2=ptr;
@@ -86,7 +84,6 @@ int main(void)
                     insert_at_last_Encyclopedia(inf2,inf3,inf4,inf5);
 
                 } else if (strcmp(inf1, "B") == 0) {
-                    printf("Book\n");
                     ptr = strtok(NULL, delim);
                     trim(ptr, NULL);
                     inf2=ptr;
@@ -104,7 +101,6 @@ int main(void)
                     insert_at_last_Book(inf2,inf3,inf4,inf5);
 
                 } else if (strcmp(inf1, "P") == 0) {
-                    printf("Periodical\n");
                     ptr = strtok(NULL, delim);
                     trim(ptr, NULL);
                     inf2=ptr;
@@ -126,18 +122,56 @@ int main(void)
                 }
 
     }
-    printf("\n");
-    printList(sizeList);
-    consoleInsertion();
-    printf("\n");
-    printList(sizeList);
-
-    save();
-
-    fclose(fp);
     if (line)
         free(line);
-    exit(EXIT_SUCCESS);
+    fclose(fp);
+
+    printf("\n");
+    printList(sizeList);
+
+    char  line2[5];
+    int choice ;
+    while(1){
+       printf("1-Display smallest i \n2-Insertion \n3-Deletion \n4-Size \n5-Save \n6-Quit \n");
+       printf("Please enter the choice that you want \n");
+
+        fgets(line2, 5, stdin);
+        choice=atoi(line2);
+        if(choice==1){
+            printf("Enter the number to display : \n");
+            fgets(line2, 5, stdin);
+            int smallest = atoi(line2);
+            printSmallestI(smallest);
+            printf("\n");
+
+        }else if(choice==2){
+            consoleInsertion();
+            printf("\n");
+
+        }else if(choice==3){
+            printf("Enter the number to delete : \n");
+            fgets(line2, 5, stdin);
+            int smallest = atoi(line2);
+            deleteSmallestI(smallest);
+            printf("\n");
+
+        }else if(choice==4){
+            size();
+            printf("\n");
+
+        }else if(choice==5){
+            save();
+            printf("\n");
+
+        }else if(choice==6){
+            quit();
+            exit(EXIT_SUCCESS);
+        }
+        else{
+            printf("You enter wrong number please try again \n");
+        }
+    }
+
 }
 
 char *trim(char *str, const char *seps)
@@ -396,7 +430,6 @@ void consoleInsertion(){
     inf1 = ptr;
 
     if (strcmp(inf1, "E") == 0) {
-        printf("Encyclopedia\n");
         ptr = strtok(NULL, delim);
         trim(ptr, NULL);
         inf2=ptr;
@@ -414,7 +447,6 @@ void consoleInsertion(){
         insert_at_last_Encyclopedia(inf2,inf3,inf4,inf5);
 
     } else if (strcmp(inf1, "B") == 0) {
-        printf("Book\n");
         ptr = strtok(NULL, delim);
         trim(ptr, NULL);
         inf2=ptr;
@@ -432,7 +464,6 @@ void consoleInsertion(){
         insert_at_last_Book(inf2,inf3,inf4,inf5);
 
     } else if (strcmp(inf1, "P") == 0) {
-        printf("Periodical\n");
         ptr = strtok(NULL, delim);
         trim(ptr, NULL);
         inf2=ptr;
@@ -460,7 +491,7 @@ void save(){
     FILE * fp;
     int i;
     /* open the file for writing*/
-    fp = fopen ("”outputbookdb.txt","w");
+    fp = fopen ("outputbookdb.txt","w");
 
 
     if(head!=NULL) {
@@ -487,4 +518,14 @@ void save(){
     }
 
     fclose (fp);
+}
+void quit(){
+    recFree(head);
+}
+void recFree(Type *tmp){
+    if(tmp->next!=NULL){
+        recFree(tmp->next);
+    }
+    tmp->next=NULL;
+    free(tmp);
 }

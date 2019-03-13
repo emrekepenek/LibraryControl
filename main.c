@@ -64,7 +64,7 @@ int main()
     size_t len = 0;
     ssize_t read;
     char delim[] = "#\n";
-    fp = fopen("deneme.txt", "r");
+    fp = fopen("inputbookdb.txt", "r");
     if (fp == NULL) {
         printf("yunus");
         exit(EXIT_FAILURE);
